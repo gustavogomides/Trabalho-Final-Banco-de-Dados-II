@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/11/2016 18:04:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Mapeamento.Empresa" table="empresa" schema="public" optimistic-lock="version">
+        <id name="codigoempresa" type="long">
+            <column name="codigoempresa" />
+            <generator class="assigned" />
+        </id>
+        <property name="segmentomercado" type="string">
+            <column name="segmentomercado" length="100" not-null="true" />
+        </property>
+        <property name="nomefantasia" type="string">
+            <column name="nomefantasia" length="100" not-null="true" />
+        </property>
+        <property name="area" type="string">
+            <column name="area" length="100" not-null="true" />
+        </property>
+        <set name="reclamacaos" table="reclamacao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codempresa" not-null="true" />
+            </key>
+            <one-to-many class="Mapeamento.Reclamacao" />
+        </set>
+    </class>
+</hibernate-mapping>

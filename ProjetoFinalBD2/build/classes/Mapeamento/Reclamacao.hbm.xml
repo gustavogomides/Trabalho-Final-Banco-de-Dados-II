@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/11/2016 18:04:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Mapeamento.Reclamacao" table="reclamacao" schema="public" optimistic-lock="version">
+        <id name="codigoreclamacao" type="long">
+            <column name="codigoreclamacao" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="empresa" class="Mapeamento.Empresa" fetch="select">
+            <column name="codempresa" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="Mapeamento.Usuario" fetch="select">
+            <column name="codusuario" not-null="true" />
+        </many-to-one>
+        <property name="regiao" type="string">
+            <column name="regiao" length="2" not-null="true" />
+        </property>
+        <property name="uf" type="string">
+            <column name="uf" length="2" not-null="true" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="cidade" length="100" not-null="true" />
+        </property>
+        <property name="assunto" type="string">
+            <column name="assunto" length="250" not-null="true" />
+        </property>
+        <property name="mesabertura" type="int">
+            <column name="mesabertura" not-null="true" />
+        </property>
+        <property name="dataabertura" type="date">
+            <column name="dataabertura" length="13" not-null="true" />
+        </property>
+        <property name="notaconsumidor" type="java.lang.Integer">
+            <column name="notaconsumidor" />
+        </property>
+        <property name="anoabertura" type="int">
+            <column name="anoabertura" not-null="true" />
+        </property>
+        <property name="comocomproucontratou" type="string">
+            <column name="comocomproucontratou" length="50" not-null="true" />
+        </property>
+        <property name="grupoproblema" type="string">
+            <column name="grupoproblema" length="150" not-null="true" />
+        </property>
+        <property name="procurouempresa" type="char">
+            <column name="procurouempresa" length="1" not-null="true" />
+        </property>
+        <property name="temporesposta" type="java.lang.Integer">
+            <column name="temporesposta" />
+        </property>
+        <property name="avaliacaoreclamacao" type="string">
+            <column name="avaliacaoreclamacao" length="50" not-null="true" />
+        </property>
+        <property name="situacao" type="string">
+            <column name="situacao" length="50" not-null="true" />
+        </property>
+        <property name="respondida" type="char">
+            <column name="respondida" length="1" not-null="true" />
+        </property>
+        <property name="datafinalizacao" type="date">
+            <column name="datafinalizacao" length="13" not-null="true" />
+        </property>
+        <property name="dataresposta" type="date">
+            <column name="dataresposta" length="13" />
+        </property>
+        <property name="problema" type="string">
+            <column name="problema" length="150" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
